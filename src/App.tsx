@@ -1,9 +1,14 @@
 import React from 'react';
+import { Switch } from 'react-router';
+import { Route } from 'react-router-dom';
+import UsersPage from './pages/users.page';
 
 const App: React.FC = () => (
-  <div>
-    <p>Hello World</p>
-  </div>
+  <Switch>
+    <Route exact path="/">
+      <UsersPage />
+    </Route>
+  </Switch>
 )
 
 
