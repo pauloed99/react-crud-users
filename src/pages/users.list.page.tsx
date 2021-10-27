@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import api from '../api/user.api';
@@ -43,9 +44,11 @@ const UsersListPage: React.FC = () => {
       try {
         setError(false);
         setIsLoading(true);
-        await api.delete(id);
+        await api.delete(`${id}`);
         await getAllUsers();
+        setIsLoading(false);
       } catch (error) {
+        console.log(2);
         setError(true);
         setIsLoading(false);
       }
