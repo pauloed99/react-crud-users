@@ -1,0 +1,43 @@
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cardsRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonFilter {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    height: 2rem;
+    width: 10vw;
+    background-color: blue;
+    color: white;
+    border-radius: 2rem;
+    border-style: none;
+}
+
+.formFilter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.inputFilter {
+    margin-right: 1rem;
+    margin-left: 0.3rem;
+}
+
+.iconsRow {
+    display: flex;
+    justify-content: space-around;
+}
