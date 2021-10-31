@@ -1,9 +1,11 @@
 .mainContainer {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     flex-direction: column;
     background-color: gainsboro;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .formContainer {
@@ -34,3 +36,13 @@
     border-radius: 2rem;
     border-style: none;
 }
+
+.errorMessage {
+    font-size: 1rem;
+    color: red;
+}
+
+.labelInput {
+    margin-bottom: 1.5rem;
+}
+

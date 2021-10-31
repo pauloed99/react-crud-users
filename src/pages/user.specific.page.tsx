@@ -5,11 +5,12 @@ import api from '../api/user.api';
 import User from '../models/User';
 import styles from '../styles/users.create.page.module.css';
 import StatusModalComponent from '../components/status.modal.component';
+import axios from 'axios';
 
 const UserSpecificPage: React.FC = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [modalVisibility, setModalVisibility] = useState(false);
-    const [error, setError] = useState(false);
+    const [error, setError] = useState('');
     const [user, setUser] = useState<User>({
         id: '',
         name: '',
@@ -31,23 +32,33 @@ const UserSpecificPage: React.FC = () => {
           setUser(response.data);
           setIsLoading(false);
       } catch (error) {
-          setIsLoading(false);
-          setError(true);
+        if (axios.isAxiosError(error)) {
+            if(error.request)
+              setError('Erro de conexão com o servidor da aplicação')
+            if(error.response){
+              setError(error.message);
+            }
+          }
       }
+      setIsLoading(false);
     } 
   
     const updateUser = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            setError(false);
+            setError('');
             showModal();
             await api.put(id, user);
-            setIsLoading(false);
         } catch (error) {
-            console.log(error);
-            setIsLoading(false);
-            setError(true);
+            if (axios.isAxiosError(error)) {
+                if(error.request)
+                  setError('Erro de conexão com o servidor da aplicação')
+                if(error.response){
+                  setError(error.message);
+                }
+            }
         }
+        setIsLoading(false)
     }
 
     return (
@@ -108,7 +119,6 @@ const UserSpecificPage: React.FC = () => {
                 closeModal={closeModal}
                 modalVisibility={modalVisibility}
                 error={error}
-                errorMessage="Erro no servidor interno ao editar usuário!"
                 isLoading={isLoading}
                 showModal={showModal}
                 successMessage="O usuário foi editado com sucesso!"

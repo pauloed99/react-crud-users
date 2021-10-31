@@ -3,9 +3,8 @@ import { Modal, Spinner } from 'react-bootstrap';
 
 interface ModalProps {
     isLoading: boolean,
-    error: boolean,
-    errorMessage: String,
-    successMessage: String,
+    error: string,
+    successMessage: string,
     modalVisibility: boolean,
     showModal: () => void,
     closeModal: () => void,
@@ -27,7 +26,7 @@ const StatusModalComponent: React.FC<ModalProps> = (props) => {
             </Modal.Body> : 
           props.error ?
           <Modal.Body>
-            <p>{props.errorMessage}</p>
+            <p>{props.error}</p>
           </Modal.Body> :
           <Modal.Body>
             <p>{props.successMessage}</p>

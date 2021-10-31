@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import api from '../api/user.api';
@@ -13,6 +12,8 @@ const UsersListPage: React.FC = () => {
   const [inputs, setInputs] = useState({age: '', cpfCnpj: ''});
 
   useEffect(() => {getAllUsers();}, []);
+
+
 
   const getAllUsers = async () => {
     try {
