@@ -7,7 +7,7 @@ import styles from '../styles/users.list.page.module.css';
 
 interface CardsGroupProps {
     users: User[],
-    deleteUser: (id: string) => void
+    deleteUser: (id: number) => void
 }
 
 const CardsGroupComponent: React.FC<CardsGroupProps> = ({users, deleteUser}) => {

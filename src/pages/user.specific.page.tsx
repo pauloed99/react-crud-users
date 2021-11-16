@@ -11,8 +11,7 @@ const UserSpecificPage: React.FC = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [modalVisibility, setModalVisibility] = useState(false);
     const [error, setError] = useState('');
-    const [user, setUser] = useState<User>({
-        id: '',
+    const inputsValues = useState({
         name: '',
         password: '',
         cpfCnpj: '',

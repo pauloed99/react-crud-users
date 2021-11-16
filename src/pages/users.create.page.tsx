@@ -41,10 +41,9 @@ const UsersCreatePage: React.FC = () => {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         if(error.request)
-          setError('Erro de conexão com o servidor da aplicação')
-        if(error.response){
+          setError('Erro de conexão com o servidor, tente mais tarde!');
+        if(error.response)
           setError('Erro ao criar registro no banco de dados, verifique seus dados');
-        }
       }
     }
     setIsLoading(false);
@@ -83,7 +82,8 @@ const UsersCreatePage: React.FC = () => {
                   className={`form-control ${styles.input}`}
                   autoComplete="off"
                   name="cpfCnpj"
-                />
+                >
+                </Field>
                 <ErrorMessage name="cpfCnpj">
                   {(error) => <p className={styles.errorMessage}>{error}</p>}
                 </ErrorMessage>
@@ -120,14 +120,14 @@ const UsersCreatePage: React.FC = () => {
 
               <div className={styles.labelInput}>
                 <label htmlFor="birthDate">Data de Nascimento:</label>
-                <input
+                <Field
                   id="birthDate"
                   type="date"
                   placeholder="Digite sua Data de Nascimento"
                   className={`form-control ${styles.input}`}
                   autoComplete="off"
                   name="birthDate"
-                  onChange={(e) => {
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     const data = e.target.value.split('-');
                     const newData = `${data[2]}/${data[1]}/${data[0]}`;
                     setFieldValue('birthDate', newData);
